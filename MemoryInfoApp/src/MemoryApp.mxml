@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" applicationDPI="160">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<fx:Script>
+		<![CDATA[
+			import com.open.MemoryInfo;
+			
+			import flashx.textLayout.formats.Float;
+			
+			
+			private var extension:MemoryInfo = new MemoryInfo(); 
+			public function init():void 
+			{ 
+				
+				hello.text="Inside Init method";
+				
+			} 
+			
+			public function clickHandler(event:Event):void
+			{
+				hello.text = "calling native";
+				
+				
+				var pngRet:Number = extension.getMemoryInfo();
+				
+				pngRet = (pngRet)/(1024 * 1024);
+				
+				
+				
+				
+			
+					hello.text = pngRet.toString() + " MB";
+				
+			}
+		]]>
+	</fx:Script>
+	
+	
+	<s:Label id="hello" x="79" y="26" width="100%">
+		
+	</s:Label>
+	<s:Button id="b1" x="79" y="115" label="click" click="clickHandler(event)">
+		
+	</s:Button>
+	
+	
+	
+	
+	
+	
+</s:Application>
